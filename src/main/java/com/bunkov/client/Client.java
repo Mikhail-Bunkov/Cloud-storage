@@ -21,7 +21,7 @@ public class Client {
 	public TextField commandField;
 
 	public Client() throws IOException {
-		socket = new Socket("localhost", 6788);
+		socket = new Socket("localhost", 6787);
 		in = new DataInputStream(socket.getInputStream());
 		out = new DataOutputStream(socket.getOutputStream());
 
@@ -57,7 +57,28 @@ public class Client {
 	}
 
 	private void getFile(String filename) {
-		//homework
+		try{
+
+			File file = new File("client/"+ filename+"_downed");//read file name
+			if(file.exists()){
+				file = new File("client/"+ filename+"_downed165");
+			}
+			out.writeUTF("download");
+			out.writeUTF(filename);
+			file.createNewFile();
+			FileOutputStream fos = new FileOutputStream(file);
+			long size = in.readLong();
+			byte[] buffer = new byte[8 * 1024];
+			for (int i = 0; i < (size+ (8 * 1024 -1)) /(8 * 1024); i++) {
+				int read = in.read(buffer);
+				fos.write(buffer, 0, read);
+			}
+			fos.close();
+			String status = in.readUTF();
+			System.out.println("Downloading status: " + status);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	private void sendFile(String filename) {

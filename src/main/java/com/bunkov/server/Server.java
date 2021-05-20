@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 public class Server {
 	public Server() {
 		ExecutorService service = Executors.newFixedThreadPool(4);
-		try(ServerSocket server = new ServerSocket(6788)){
+		try(ServerSocket server = new ServerSocket(6787)){
 			while (true){
 				Socket socket = server.accept();
 				System.out.println("Client accepted - " + socket.getInetAddress());
