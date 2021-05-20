@@ -1,0 +1,16 @@
+<?import java.net.URL?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<VBox fx:controller="com.bunkov.client.Client"
+      xmlns:fx="http://javafx.com/fxml" alignment="center">
+    <stylesheets>
+        <URL value="@/css/style.css"/>
+    </stylesheets>
+
+    <TextField fx:id="commandField"/>
+    <Button text="send" onAction="#doCommand"/>
+
+
+
+</VBox>
