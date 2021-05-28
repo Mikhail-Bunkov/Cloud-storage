@@ -28,7 +28,7 @@ public class Client {
 
 	}
 
-//	public void send(ActionEvent actionEvent) {
+	//	public void send(ActionEvent actionEvent) {
 //		String message = commandField.getText();
 //		try {
 //			out.writeUTF(message);
